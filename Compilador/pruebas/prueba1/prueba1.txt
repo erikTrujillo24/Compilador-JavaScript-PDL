@@ -1,0 +1,10 @@
+let boolean found;
+found = 2 > 1;
+
+if(!found) {
+	alert("Hola mundo?");
+}
+else {
+	alert("No hay nada");
+}
+

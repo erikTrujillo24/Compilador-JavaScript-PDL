@@ -1,0 +1,17 @@
+let number x = 10;
+let string y = "Hola Mundo";
+let string z = "Adios Mundo";
+
+function string hola (number op1, number op2) {
+	let number suma = op1+op2;
+	if(suma > 20) {
+		return y;
+	}
+	else {
+		return z;
+	}
+}
+
+let string res = hola(x, 20);
+alert(res);
+alert("\n");

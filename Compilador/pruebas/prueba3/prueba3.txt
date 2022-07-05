@@ -1,0 +1,18 @@
+function number fun (boolean x, number y) {
+	let number z = 5;
+	let number res = 10;
+	if(!x) {
+		res = ++res + 2;
+	}
+	else {
+		res = ++y + z;
+	}
+	return res;
+}
+
+let number x;
+alert("Escribe un numero: ");
+input(x);
+let number result = fun(x>10, x);
+alert(result);
+alert("\n");

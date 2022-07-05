@@ -1,0 +1,54 @@
+EtFun1:
+_temp1 :=ent op1 + op2
+return _temp1
+return
+EtFun2:
+if op1 > op2 goto Etiq1
+_temp2 :=ent 0
+goto Etiq2
+Etiq1:
+_temp2 :=ent 1
+Etiq2:
+if _temp2 == 0 goto Etiq4
+_temp3 :=cad "true"
+return _temp3
+goto Etiq3
+Etiq4:
+_temp4 :=cad "false"
+return _temp4
+Etiq3: 
+return
+_temp5 :=cad "Selecciona una operacion (1: suma | 2: mayor): "
+alert_cad _temp5
+input_ent op
+_temp6 :=cad "Escribe el primer operando: "
+alert_cad _temp6
+input_ent op1
+_temp7 :=cad "Escribe el segundo operando: "
+alert_cad _temp7
+input_ent op2
+_temp8 :=cad "El resultado es: "
+alert_cad _temp8
+_temp9 :=ent 1
+if op > _temp9 goto Etiq5
+_temp10 :=ent 0
+goto Etiq6
+Etiq5:
+_temp10 :=ent 1
+Etiq6:
+if _temp10 == 0 goto Etiq8
+param op2
+param op1
+_temp11 := call EtFun2
+alert_cad _temp11
+_temp12 :=cad "\n"
+alert_cad _temp12
+goto Etiq7
+Etiq8:
+param op2
+param op1
+_temp13 := call EtFun1
+alert_ent 389
+_temp14 :=cad "\n"
+alert_cad _temp14
+Etiq7: 

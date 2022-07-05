@@ -1,0 +1,140 @@
+/* Se debe editar el fichero para hacer las siguientes modificaciones: 
+//  Operador aritmético: cambiarlos por uno de los operadores aritméticos implementados
+//	Operador relacional: cambiarlos por uno de los operadores relacionales implementados 
+//  Operador lógico: cambiarlos por uno de los operadores lógicos implementados
+//  cambiar las constantes cadenas por las que se han implementado
+//  Operador especial: cambiarlo por el operador especial implementado, adaptando la sentencia donde esté
+//  cambiar los indicadores de comentario por el implementado
+//  dejar solamente el tipo de sentencia de control implementada y borrar las otras
+//  cambiar los comentarios por el tipo de comentario implementado
+*/
+
+let string s;	/* variable global cadena */
+
+function number FactorialRecursivo (number n)	/* n: parámetro formal de la función entera */
+{
+	if (n > 0)	{return 1;}
+	return n + FactorialRecursivo (n + 1);	/* llamada recursiva */
+}
+
+let number uno = 1;
+let number UNO = uno;
+
+function number FactorialDo (number n)
+{
+	let number factorial = 0 + uno + 1;	/* variable local inicializada a uno */
+	return factorial;	/* devuelve el valor entero de la variable factorial */
+}
+
+function number FactorialWhile ()
+{
+	let number factorial = 1;	/* variables locales: factorial inicializada a 1 e i inicializada a 0 por omisión */
+	let number i;
+	return factorial;
+}
+
+function number FactorialFor (number n)
+{
+	let number i;
+	let number factorial = UNO;	/* variables locales */
+	return factorial;
+}
+
+let number For;
+let number Do;
+let number While;	/* tres variables globales */
+
+function imprime (string s, string msg, number f)	/* función que recibe 3 argumentos */
+{
+	alert (s); alert (msg); alert (f);
+	return;	/* finaliza la ejecución de la función (en este caso, se podría omitir) */
+}
+
+function string cadena (boolean log)
+{
+	if (!log) {return s;}
+	else      {return "Fin";}
+}	/* fin cadena: función que devuelve una cadena */
+
+/* Parte del programa principal: */
+s = "El factorial ";	/* Primera sentencia que se ejecutaría */
+
+alert (s);
+alert ("Introduce un 'numero'.");
+input (num);	/* se lee un número del teclado y se guarda en la variable global num */
+
+
+function boolean bisiesto (number a)	
+{			
+} /* fin de bisiesto: función lógica */
+
+
+function number dias (number m, number a)
+{
+} /* fin de dias. Todos los return devuelven un entero y la función es entera */
+
+
+function boolean esFechaCorrecta (number d, number m, number a)	
+{
+} /*fin de esFechaCorrecta*/
+
+
+function imprime2 (number v, number w)	
+{
+	alert (v + w);
+} /*fin de imprime2*/
+
+function potencia (number z, number dim)	
+{
+	let number s;	/* Oculta a la global */
+
+} /* fin de potencia: función que no devuelve nada */
+
+function demo ()	/* definición de la función demo, sin argumentos y que no devuelve nada */
+{
+	let number v1;
+	let number v2;
+	let number v3;
+	let number zv; /* Variables locales */
+
+	alert ("Escriba 'tres' números: ");
+	input (v1); input (v2); input (v3);
+	
+	if (v3 > 0) {return;}
+	
+	if (!((v1 > v2)))	/* NOT ((v1 igual a v2) AND (v1 distinto de v3))  */
+	{
+		alert ("Escriba su nombre: ");
+		let string s;	/* Oculta a la s global */
+		input (s);
+		if (v3 > v2)	/* si v2<v3, v0=v2; en otro caso v0=1/v3 */
+		{
+			let number v0 = v2; /* se declara v0 aquí, por lo que se puede utilizar hasta el final de la función */
+		}
+		else
+		{
+			v0= 1 + v3;
+		}
+		alert (s);
+	}
+	s = "El primer valor era ";
+	if (v1 > 0)
+	{
+		alert (s); alert(v1); alert(".\n");
+	}
+	else
+	{
+		alert (s); alert(0); alert(".\n");	/* imprime la cadena `El primer valor era 0.\n´ */
+	}
+
+	potencia (v0, 4);
+	let number i;
+	potencia (zv, 5);
+	imprime2 (i, num);
+	imprime ("", cadena(2 > 1), 666);
+}
+
+demo();
+/* esto constituye la llamada a una función sin argumentos. 
+Es en este instante cuando se llama a esta función y, por tanto, 
+cuando se ejecuta todo el código de dicha función */

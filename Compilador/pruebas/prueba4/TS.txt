@@ -1,0 +1,130 @@
+TABLA DE SIMBOLOS GLOBAL #1:
+
+*LEXEMA: 'mayor'
+	ATRIBUTOS: 
+	+tipo:			'fun'
+	+numParam:		2
+	+tipoParam01:	'ent'
+	+tipoParam02:	'ent'
+	+tipoRet:		'cad'
+	+etiqFun:		'EtFun2'
+
+*LEXEMA: '_temp14'
+	ATRIBUTOS: 
+	+tipo:			'cad'
+	+despl:			390
+
+*LEXEMA: '_temp13'
+	ATRIBUTOS: 
+	+tipo:			'ent'
+	+despl:			389
+
+*LEXEMA: '_temp12'
+	ATRIBUTOS: 
+	+tipo:			'cad'
+	+despl:			325
+
+*LEXEMA: '_temp11'
+	ATRIBUTOS: 
+	+tipo:			'cad'
+	+despl:			261
+
+*LEXEMA: 'op2'
+	ATRIBUTOS: 
+	+tipo:			'ent'
+	+despl:			2
+
+*LEXEMA: 'op1'
+	ATRIBUTOS: 
+	+tipo:			'ent'
+	+despl:			1
+
+*LEXEMA: 'op'
+	ATRIBUTOS: 
+	+tipo:			'ent'
+	+despl:			0
+
+*LEXEMA: '_temp10'
+	ATRIBUTOS: 
+	+tipo:			'log'
+	+despl:			260
+
+*LEXEMA: '_temp5'
+	ATRIBUTOS: 
+	+tipo:			'cad'
+	+despl:			3
+
+*LEXEMA: 'suma'
+	ATRIBUTOS: 
+	+tipo:			'fun'
+	+numParam:		2
+	+tipoParam01:	'ent'
+	+tipoParam02:	'ent'
+	+tipoRet:		'ent'
+	+etiqFun:		'EtFun1'
+
+*LEXEMA: '_temp6'
+	ATRIBUTOS: 
+	+tipo:			'cad'
+	+despl:			67
+
+*LEXEMA: '_temp7'
+	ATRIBUTOS: 
+	+tipo:			'cad'
+	+despl:			131
+
+*LEXEMA: '_temp8'
+	ATRIBUTOS: 
+	+tipo:			'cad'
+	+despl:			195
+
+*LEXEMA: '_temp9'
+	ATRIBUTOS: 
+	+tipo:			'ent'
+	+despl:			259
+
+--------------------------------------
+TABLA DE SIMBOLOS DE suma #2:
+
+*LEXEMA: '_temp1'
+	ATRIBUTOS: 
+	+tipo:			'ent'
+	+despl:			2
+
+*LEXEMA: 'op2'
+	ATRIBUTOS: 
+	+tipo:			'ent'
+	+despl:			0
+
+*LEXEMA: 'op1'
+	ATRIBUTOS: 
+	+tipo:			'ent'
+	+despl:			1
+
+--------------------------------------
+TABLA DE SIMBOLOS DE mayor #3:
+
+*LEXEMA: '_temp4'
+	ATRIBUTOS: 
+	+tipo:			'cad'
+	+despl:			67
+
+*LEXEMA: '_temp3'
+	ATRIBUTOS: 
+	+tipo:			'cad'
+	+despl:			3
+
+*LEXEMA: 'op1'
+	ATRIBUTOS: 
+	+tipo:			'ent'
+	+despl:			1
+
+*LEXEMA: '_temp2'
+	ATRIBUTOS: 
+	+tipo:			'log'
+	+despl:			2
+
+*LEXEMA: 'op2'
+	ATRIBUTOS: 
+	+tipo:			'ent'
+	+despl:			0

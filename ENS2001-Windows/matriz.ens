@@ -1,0 +1,119 @@
+;matriz.ens - ENS2001 Ejemplo de uso - Abril 2002
+;Adaptado del original para ENS96, por Raul Rodriguez Barrio (Octubre 1996)
+;NOTA: La ausencia de acentos es intencionada, para permitir la
+;legibilidad tanto en entornos Windows como Linux
+
+;Muestra un menu que ofrece opciones para manejar una matriz 5x5
+;1.Introducir un valor
+;2.Consultar un valor
+;3.Mostrar el contenido de la matriz
+;4.Salir
+
+nFilas:                 EQU 5    ; numero de filas de la matriz
+nColumnas:              EQU 5    ; numero de columnas de la matriz
+nOpciones:              EQU 4    ; num. de opciones
+opcAlmacenar:           EQU 1
+opcObtener:             EQU 2
+opcMostrar:             EQU 3
+opcSalir:               EQU 4
+
+                        MOVE #0x7FFF,.SP ; inicializar la pila
+bucleGeneral:           CALL /funcMenu          
+                        MOVE .R1, .R5 ; guardar la opcion en R5
+                        CMP .R5, #opcSalir ; comprobar que es la opcion
+                                           ; de salir
+                        BZ /fin
+                        CMP .R5, #opcMostrar ; comprobar que es la opcion de 
+                                             ; mostrar
+                        BZ /opcion3
+                        CALL /solicitarPosicion ; solicitar par de posicion en 
+                                                ; la matriz
+                        CMP .R5 , #opcAlmacenar ; comprobar si es opcion 1 o 2
+                        BNZ /opcion2
+opcion1:                WRSTR /sPedirValor ; solicitar un valor
+                        ININT .R3               
+                        CALL /ponerValor ; colocar valor en la memoria
+                        BR /bucleGeneral        
+opcion2:                CALL /dameValor ; solicitar valor de la matriz
+                        WRSTR /sDecirValor ; sacar valor por pantalla
+                        WRINT .R3
+                        BR /bucleGeneral
+opcion3:                CALL /mostrarMatriz ; llamar a procedimiento de mostrar 
+                                            ; matriz
+                        WRCHAR #13
+                        BR /bucleGeneral
+fin:                    HALT
+
+longAlmacenMatriz:      EQU 5*5
+dMatriz:                RES 25
+
+sRetCarro:              DATA "\n"
+sAlmacenar:             DATA "\n1 .- Amacenar valor"
+sObtener:               DATA "\n2 .- Obtener valor"
+sMostrar:               DATA "\n3 .- Escribir Matriz"
+sSalir:                 DATA "\n4 .- Salir"    
+sPedirOpcion:           DATA "\n   Dame opcion:"
+sPedirFila:             DATA "\n Dame número de fila: "
+sPedirColumna:          DATA "\n Dame número de columna: "
+sDecirValor:            DATA "\n El valor es "
+sPedirValor:            DATA "\n Valor a almacenar: "
+
+funcMenu:               WRSTR /sRetCarro    
+                        WRSTR /sAlmacenar
+                        WRSTR /sObtener
+                        WRSTR /sMostrar
+                        WRSTR /sSalir
+                        WRSTR /sPedirOpcion
+menuDeNuevo:            INCHAR .R1 ; lee la opcion
+                        SUB .R1, #48 ; resta el valor ascii del '0'
+                        CMP .A,#1 ; comprueba límite inferior   
+                        BN /menuDeNuevo ; si no valido, repetir lectura
+                        CMP #nOpciones,.A ; comprueba límite superior
+                        BN /menuDeNuevo ; si no valido, repetir lectura   
+                        MOVE .A, .R1 ; colocar salida en .R1
+                        RET
+
+solicitarPosicion:      WRSTR /sPedirFila ; mensaje de solicitud
+                        ININT .R1
+                        CMP .R1, #1 ; comprueba límite inferior
+                        BN /solicitarPosicion ; si no valido, repetir
+                        CMP .R1, #nFilas ; comprueba límite superior
+                        BP /solicitarPosicion ; si no valido, repetir
+otraColumna:            WRSTR /sPedirColumna ; mensaje de solicitud
+                        ININT .R2
+                        CMP .R2, #1 ; comprueba límite inferior
+                        BN /otraColumna ; si no valido, repetir
+                        CMP .R2, #nColumnas ; comprueba límite superior
+                        BP /otraColumna ; si no valido, repetir
+                        RET
+
+dameValor:              DEC .R2
+                        DEC .R1
+                        MUL .R1, #nColumnas
+                        ADD .A, .R2
+                        ADD .A, #dMatriz
+                        MOVE .A, .IX 
+                        MOVE #0[.IX], .R3
+                        RET
+ponerValor:             DEC .R2
+                        DEC .R1
+                        MUL .R1, #nColumnas
+                        ADD .A, .R2
+                        ADD .A, #dMatriz
+                        MOVE .A, .IX
+                        MOVE .R3, #0[.IX]
+                        RET 
+mostrarMatriz:          MOVE #nFilas, .R1
+                        MOVE #dMatriz, .IX
+                        WRSTR /sRetCarro
+otraFila:               MOVE #0, .R2
+sigueFila:              WRINT #0[.IX]
+                        INC .R2
+                        INC .IX
+                        WRCHAR #32
+                        CMP .R2, #nColumnas
+                        BNZ /sigueFila
+                        WRSTR /sRetCarro
+                        DEC .R1
+                        BNZ /otraFila
+                        RET

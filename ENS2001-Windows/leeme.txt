@@ -1,0 +1,75 @@
+          ENS2001: Intérprete de Ensamblador
+          ==================================
+
+ENS2001 dispone de tres versiones. Una de ellas funciona en
+MS-DOS (más precisamente, en modo consola de Windows). La otra
+versión funciona en Windows (su funcionamiento es igual, pero incorpora
+una interfaz de usuario gráfica que facilita su utilización). La tercera
+de ellas es análoga a la primera, pero para GNU/Linux.
+
+ENS2001 es una aplicación que integra la función de Ensamblador de un
+subconjunto de instrucciones del estándar IEEE 694 y la función de
+Simulador, ya que es capaz de ejecutar programas ensamblados para
+dicha implementación particular del estándar. Se trata de una mejora de
+las herramientas disponibles hasta ahora, como son ASS y ENS96, a las
+que añade una arquitectura de máquina virtual mejorada, una implementación
+del lenguaje más homogénea, y, principalmente, una nueva y cómoda interfaz
+gráfica.
+
+Para usar la herramienta, simplemente hay que descomprimir en un directorio 
+del disco duro los archivos contenidos en el paquete comprimido
+correspondiente a la versión que se quiera emplear. El directorio de trabajo
+no debe estar protegido contra escritura, ya que la herramienta genera
+archivos temporales durante la sesión.
+
+Para la versión DOS de ENS2001, los ficheros incluidos en el paquete son
+los siguientes:
+
+-leeme.txt: este fichero
+-historia.txt: un listado de los cambios realizados en las últimas versiones
+-bugs.txt: listado de errores conocidos, indicando si ya están solucionados
+-ens2001.exe: ejecutable del programa
+-ayuda.txt: fichero que contiene el texto de ayuda del programa
+-Manual de Usuario.pdf: documento PDF que incluye la descripción de la
+máquina virtual, el juego de instrucciones y modos de direccionamiento y
+utilización del programa
+-*.ens: diversos programas en ensamblador de ejemplo
+
+Para la versión Windows de ENS2001, los ficheros incluidos en el paquete son
+los siguientes:
+
+-leeme.txt: este fichero
+-historia.txt: un listado de los cambios realizados en las últimas versiones
+-bugs.txt: listado de errores conocidos, indicando si ya están solucionados
+-winens.exe: ejecutable del programa
+-Manual de Usuario.pdf: documento PDF que incluye la descripción de la
+máquina virtual, el juego de instrucciones y modos de direccionamiento y
+utilización del programa
+-*.ens: diversos programas en ensamblador de ejemplo
+
+Para la versión GNU/Linux de ENS2001, los ficheros incluidos en el paquete
+son los siguientes:
+
+-leeme.txt: este fichero
+-historia.txt: un listado de los cambios realizados en las últimas versiones
+-bugs.txt: listado de errores conocidos, indicando si ya están solucionados
+-ens2001: ejecutable del programa
+-ayuda.txt: fichero que contiene el texto de ayuda del programa
+-Manual de Usuario.pdf: documento PDF que incluye la descripción de la
+máquina virtual, el juego de instrucciones y modos de direccionamiento y
+utilización del programa
+-fuentes.tar: fichero compactado que contiene los fuentes de la aplicación
+-*.ens: diversos programas en ensamblador de ejemplo
+
+En caso de que se encontrara algún error durante su uso, se agradecerá que
+se envíe un correo electrónico con la descripción precisa del error
+detectado, incluyendo todos los datos posibles y el programa ensamblador que
+ha provocado el fallo. También se agradecerá el envío de sugerencias.
+Dado que en la versión Linux se proporcionan los fuentes, se agradecería que
+cualquiera que detecte un fallo, corrigiera el programa y enviara el código
+fuente modificado (con una indicación clara y precisa del código cambiado
+y sus razones).
+
+La dirección a la que se pueden enviar estos mensajes es
+al Webmaster de la página de Compiladores.
+

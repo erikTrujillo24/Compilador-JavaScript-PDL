@@ -1,0 +1,62 @@
+EtFun1:
+_temp1 :=cad "Hola!\n"
+alert_cad _temp1
+return
+return
+EtFun2:
+_temp2 :=cad "Adios!\n"
+alert_cad _temp2
+return
+return
+EtFun3:
+if v1 > v2 goto Etiq1
+_temp3 :=ent 0
+goto Etiq2
+Etiq1:
+_temp3 :=ent 1
+Etiq2:
+if _temp3 == 0 goto Etiq4
+_temp4 :=cad "El primero es mayor que el segundo.\n"
+alert_cad _temp4
+goto Etiq3
+Etiq4:
+Etiq3: 
+if v1 > v3 goto Etiq5
+_temp5 :=ent 0
+goto Etiq6
+Etiq5:
+_temp5 :=ent 1
+Etiq6:
+if _temp5 == 0 goto Etiq8
+_temp6 :=cad "El primero es mayor que el tercero.\n"
+alert_cad _temp6
+goto Etiq7
+Etiq8:
+Etiq7: 
+if v2 > v3 goto Etiq9
+_temp7 :=ent 0
+goto Etiq10
+Etiq9:
+_temp7 :=ent 1
+Etiq10:
+if _temp7 == 0 goto Etiq12
+_temp8 :=cad "El segundo mas el tercero es: "
+alert_cad _temp8
+_temp9 :=ent v2 + v3
+alert_ent 195
+_temp10 :=cad "\n"
+alert_cad _temp10
+goto Etiq11
+Etiq12:
+Etiq11: 
+_temp11 :=cad "Todos son menores...\n"
+alert_cad _temp11
+return
+call EtFun1
+_temp12 :=cad "Escribe tres numeros: "
+alert_cad _temp12
+input_ent v1
+input_ent v2
+input_ent v3
+call EtFun3
+call EtFun2

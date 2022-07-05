@@ -1,0 +1,31 @@
+_temp1 :=ent 10
+x :=ent _temp1
+_temp2 :=cad "Hola Mundo"
+y :=cad "_temp2"
+_temp3 :=cad "Adios Mundo"
+z :=cad "_temp3"
+EtFun1:
+_temp4 :=ent op1 + op2
+suma :=ent _temp4
+_temp5 :=ent 20
+if suma > _temp5 goto Etiq1
+_temp6 :=ent 0
+goto Etiq2
+Etiq1:
+_temp6 :=ent 1
+Etiq2:
+if _temp6 == 0 goto Etiq4
+return y
+goto Etiq3
+Etiq4:
+return z
+Etiq3: 
+return
+_temp7 :=ent 20
+param _temp7
+param x
+_temp8 := call EtFun1
+res :=cad "_temp8"
+alert_cad res
+_temp9 :=cad "\n"
+alert_cad _temp9

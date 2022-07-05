@@ -1,0 +1,38 @@
+EtFun1:
+_temp1 :=ent 5
+z :=ent _temp1
+_temp2 :=ent 10
+res :=ent _temp2
+_temp3 :=ent !x
+if _temp3 == 0 goto Etiq4
+res :=ent res + 1
+_temp4 :=ent res
+_temp5 :=ent 2
+_temp6 :=ent _temp4 + _temp5
+res :=ent _temp6
+goto Etiq3
+Etiq4:
+y :=ent y + 1
+_temp7 :=ent y
+_temp8 :=ent _temp7 + z
+res :=ent _temp8
+Etiq3: 
+return res
+return
+_temp9 :=cad "Escribe un numero: "
+alert_cad _temp9
+input_ent x
+_temp10 :=ent 10
+if x > _temp10 goto Etiq5
+_temp11 :=ent 0
+goto Etiq6
+Etiq5:
+_temp11 :=ent 1
+Etiq6:
+param x
+param _temp11
+_temp12 := call EtFun1
+result :=ent _temp12
+alert_ent 68
+_temp13 :=cad "\n"
+alert_cad _temp13

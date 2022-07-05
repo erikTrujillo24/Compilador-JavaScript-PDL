@@ -1,0 +1,37 @@
+let number op;
+let number op1;
+let number op2;
+let string kk;
+
+function number suma (number op1, number op2) {
+	alert(op1); alert(op2);
+	return op1+op2;
+}
+
+function string mayor (number op1, number op2) {
+	alert(op1); alert(op2);
+	if(op1 > op2) {
+		kk = mayor(op1,op2+2);
+	}
+	else {
+		kk = "false";
+	}	
+	alert(op1); alert(op2);
+	return kk;
+}
+
+alert("Selecciona una operacion (1: suma | 2: mayor): ");
+input(op);
+alert("Escribe el primer operando: ");
+input(op1);
+alert("Escribe el segundo operando: ");
+input(op2);
+alert("El resultado es: ");
+if(op > 1) {
+	alert(mayor(op1, op2));
+	alert("\n");
+}
+else {
+	alert(suma(op1, op2));
+	alert("\n");
+}

@@ -1,0 +1,14 @@
+          ENS 2001: Intérprete de Ensamblador
+          ===================================
+
+-Bugs conocidos:
+
+11.08.2007
+En la versión Linux, si se intenta leer de la entrada estándar y se pulsa
+Ctrl-D (EOF) el programa entra en un bucle infinito.
+
+27.05.2004
+La instrucción WRSTR falla si se intenta imprimir una cadena con un solo
+carácter en blanco: " ".
+
+

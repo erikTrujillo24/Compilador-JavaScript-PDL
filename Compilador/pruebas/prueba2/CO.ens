@@ -1,0 +1,219 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;										;
+;		Compilado por CompiladorJSPDL	;
+;		Versión 2.3						;
+;		Erik Trujillo Guzmán			;
+;										;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+MOVE #inicio_datos_estaticos, .IY
+MOVE #inicio_pila, .IX
+BR /main 			;salto al programa principal
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+;;;;;;;;;;;;;;;;;;;;; FUNCIONES ;;;;;;;;;;;;;;;;;;;;;;
+
+
+;;;;;;;;;;; FUNCIÓN 'hola' ;;;;;;;;;;;
+
+EtFun1:	NOP
+		ADD #2[.IX], #1[.IX]
+		MOVE .A, #3[.IX]
+		MOVE #3[.IX], #4[.IX]
+		MOVE #20, #5[.IX]
+		CMP #5[.IX], #4[.IX]
+		BN /Etiq1
+		MOVE #0, #6[.IX]
+		BR /Etiq2
+Etiq1:	NOP
+		MOVE #1, #6[.IX]
+Etiq2:	NOP
+		CMP #6[.IX], #0
+		BZ /Etiq4
+		SUB #tam_RA_hola, #64
+		ADD .A, .IX
+		MOVE .A, .R9
+		ADD #66, .IY
+		MOVE .A, .R8
+bucle5: MOVE [.R8], [.R9]
+		INC .R8
+		INC .R9
+		CMP [.R8], #0
+		BNZ /bucle5
+		BR [.IX]
+		BR /Etiq3
+Etiq4:	NOP
+		ADD #127, .IY
+		ADD #67, .A
+		MOVE .A, .R7
+		SUB #tam_RA_hola, #64
+		ADD .A, .IX
+		MOVE .A, .R9
+		ADD #0, .R7
+		MOVE .A, .R8
+bucle6: MOVE [.R8], [.R9]
+		INC .R8
+		INC .R9
+		CMP [.R8], #0
+		BNZ /bucle6
+		BR [.IX]
+Etiq3:	NOP
+		BR [.IX]
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+;;;;;;;;;;;;;;;;; PROGRAMA PRINCIPAL ;;;;;;;;;;;;;;;;;;;;
+
+main:	NOP
+		MOVE #10, #1[.IX]
+		MOVE #1[.IX], #1[.IY]
+		ADD #cad_1, #0
+		MOVE .A, .R8
+		ADD #3, .IX
+		MOVE .A, .R9
+bucle1: MOVE [.R8], [.R9]
+		INC .R8
+		INC .R9
+		CMP [.R8], #0
+		BNZ /bucle1
+		ADD #3, .IX
+		MOVE .A, .R8
+		ADD #66, .IY
+		MOVE .A, .R9
+bucle2: MOVE [.R8], [.R9]
+		INC .R8
+		INC .R9
+		CMP [.R8], #0
+		BNZ /bucle2
+		ADD #127, .IX
+		ADD #3, .A
+		MOVE .A, .R7
+		ADD #cad_2, #0
+		MOVE .A, .R8
+		ADD #0, .R7
+		MOVE .A, .R9
+bucle3: MOVE [.R8], [.R9]
+		INC .R8
+		INC .R9
+		CMP [.R8], #0
+		BNZ /bucle3
+		ADD #127, .IX
+		ADD #3, .A
+		MOVE .A, .R5
+		ADD #127, .IY
+		ADD #67, .A
+		MOVE .A, .R7
+		ADD #0, .R5
+		MOVE .A, .R8
+		ADD #0, .R7
+		MOVE .A, .R9
+bucle4: MOVE [.R8], [.R9]
+		INC .R8
+		INC .R9
+		CMP [.R8], #0
+		BNZ /bucle4
+		ADD #127, .IX
+		ADD #127, .A
+		ADD #4, .A
+		MOVE .A, .R7
+		MOVE #20, [.R7]
+		ADD #127, .IX
+		ADD #127, .A
+		ADD #4, .A
+		MOVE .A, .R5
+		ADD #tam_RA_main, .IX
+		ADD #1, .A
+		MOVE [.R5], [.A]
+		ADD #tam_RA_main, .IX
+		ADD #2, .A
+		MOVE #1[.IY], [.A]
+		ADD #127, .IX
+		ADD #127, .A
+		ADD #5, .A
+		MOVE .A, .R3
+		;; SECUENCIA DE LLAMADA
+		; se almacena la direccion de retorno
+		ADD #tam_RA_main, .IX
+		MOVE #dir_ret1, [.A]
+		; se incrementa el Puntero de Pila
+		ADD #tam_RA_main, .IX
+		MOVE .A, .IX
+		; se salta al procedimiento llamado
+		BR /EtFun1
+
+		;; SECUENCIA DE RETORNO
+		; se guarda el valor devuelto
+dir_ret1: SUB #tam_RA_hola, #64
+		ADD .A, .IX
+		MOVE .A, .R8
+		ADD #0, .R3
+		MOVE .A, .R9
+bucle7: MOVE [.R8], [.R9]
+		INC .R8
+		INC .R9
+		CMP [.R8], #0
+		BNZ /bucle7
+		; se decrementa el Puntero de Pila
+		SUB .IX, #tam_RA_main
+		MOVE .A, .IX
+		ADD #127, .IX
+		ADD #127, .A
+		ADD #5, .A
+		MOVE .A, .R5
+		ADD #127, .IY
+		ADD #127, .A
+		ADD #69, .A
+		MOVE .A, .R7
+		ADD #0, .R5
+		MOVE .A, .R8
+		ADD #0, .R7
+		MOVE .A, .R9
+bucle8: MOVE [.R8], [.R9]
+		INC .R8
+		INC .R9
+		CMP [.R8], #0
+		BNZ /bucle8
+		ADD #127, .IY
+		ADD #127, .A
+		ADD #69, .A
+		MOVE .A, .R7
+		WRSTR [.R7]
+		ADD #127, .IX
+		ADD #127, .A
+		ADD #127, .A
+		ADD #6, .A
+		MOVE .A, .R7
+		ADD #cad_3, #0
+		MOVE .A, .R8
+		ADD #0, .R7
+		MOVE .A, .R9
+bucle9: MOVE [.R8], [.R9]
+		INC .R8
+		INC .R9
+		CMP [.R8], #0
+		BNZ /bucle9
+		ADD #127, .IX
+		ADD #127, .A
+		ADD #127, .A
+		ADD #6, .A
+		MOVE .A, .R7
+		WRSTR [.R7]
+
+		HALT
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+cad_1: DATA "Hola Mundo"
+cad_2: DATA "Adios Mundo"
+tam_RA_hola: EQU 71
+cad_3: DATA "\n"
+tam_RA_main: EQU 452
+
+inicio_datos_estaticos: RES 451
+inicio_pila: NOP
+
+END

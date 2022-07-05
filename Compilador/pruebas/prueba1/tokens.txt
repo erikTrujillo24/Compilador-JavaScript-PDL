@@ -1,0 +1,30 @@
+<PalRes, 10>
+<PalRes, 1>
+<id, found>
+<ptoComa, >
+<id, found>
+<igual, >
+<cteEntera, 2>
+<OpRel, 1>
+<cteEntera, 1>
+<ptoComa, >
+<PalRes, 7>
+<parentAbre, >
+<OpLog, 1>
+<id, found>
+<parentCierra, >
+<llaveAbre, >
+<PalRes, 4>
+<parentAbre, >
+<cadena, Hola mundo?>
+<parentCierra, >
+<ptoComa, >
+<llaveCierra, >
+<PalRes, 8>
+<llaveAbre, >
+<PalRes, 4>
+<parentAbre, >
+<cadena, No hay nada>
+<parentCierra, >
+<ptoComa, >
+<llaveCierra, >

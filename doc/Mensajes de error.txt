@@ -1,0 +1,93 @@
+1: Token 'token' no esperado.
+
+2: Entero fuera de rango. El máximo entero permitido es el 32767.
+
+3: Cadena con más de 64 caracteres.
+
+4: Variable 'token' ya declarada.
+
+5: La condición de la sentencia 'if' debe ser de tipo lógico.
+
+6: La llamada al método función(args) es incorrecta.
+
+7: Los tipos de ambos lados de la asignación deben ser iguales.
+
+8: La sentencia 'alert' solo admite argumentos de tipo entero o cadena.
+
+9: La sentencia 'input' solo admite argumentos de tipo entero o cadena.
+
+10: El operador '>' solo se aplica sobre datos de tipo entero.
+
+11: El operador '+' solo se aplica sobre datos de tipo entero.
+
+12: El operador '!' solo se aplica sobre datos de tipo lógico.
+
+13: El método 'función' no recibe argumentos.
+
+14: El operador '++' solo se aplica sobre datos de tipo entero.
+
+15: Método 'función' no declarado.
+
+16: El método 'función' no puede devolver ningún valor.
+
+17: El tipo de la sentencia 'return' no coincide con el tipo de retorno del método 'función': tipoRet.
+
+18: Se esperaba un tipo (number, boolean o string). La forma de declarar una variable es: let tipo nombre [= expresión];.
+
+19: Se esperaba el nombre de una variable. La forma de declarar una variable es: let tipo nombre [= expresión];.
+
+20: Se esperaba una expresión después de '='.
+
+21: Se esperaba '('. La forma de utilizar una sentencia condicional es: if (condición) {cuerpo1} [else {cuerpo2}].
+
+22: Se esperaba una expresión después de '('. La forma de utilizar una sentencia condicional es: if (condición) {cuerpo1} [else {cuerpo2}].
+
+23: Se esperaba ')'. La forma de utilizar una sentencia condicional es: if (condición) {cuerpo1} [else {cuerpo2}].
+
+24: Se esperaba '{'. La forma de utilizar una sentencia condicional es: if (condición) {cuerpo1} [else {cuerpo2}].
+
+25: Se esperaba '}'. La forma de utilizar una sentencia condicional es: if (condición) {cuerpo1} [else {cuerpo2}].
+
+26: Se esperaba '('. La forma de utilizar la instrucción 'alert' es: alert (expresión);.
+
+27: Se esperaba una expresión. La forma de utilizar la instrucción 'alert' es: alert (expresión);.
+
+28: Se esperaba ')'. La forma de utilizar la instrucción 'alert' es: alert (expresión);.
+
+29: Se esperaba '('. La forma de utilizar la instrucción 'input' es: input (variable);.
+
+30: Se esperaba el nombre de una variable. La forma de utilizar la instrucción 'input' es: input (variable);.
+
+31: Se esperaba ')'. La forma de utilizar la instrucción 'input' es: input (variable);.
+
+32: Se esperaba el nombre de la función. La forma de declarar una función es: function [tipo] nombre ([argumentos]) {cuerpo}.
+
+33: Se esperaba '('. La forma de declarar una función es: function [tipo] nombre ([argumentos]) {cuerpo}.
+
+34: Se esperaba ')'. La forma de declarar una función es: function [tipo] nombre ([argumentos]) {cuerpo}.
+
+35: Se esperaba '{'. La forma de declarar una función es: function [tipo] nombre ([argumentos]) {cuerpo}.
+
+36: Se esperaba '}'. La forma de declarar una función es: function [tipo] nombre ([argumentos]) {cuerpo}.
+
+37: Se esperaba una expresión después de '!'.
+
+38: Se esperaba una expresión después de '('.
+
+39: Se esperaba el nombre de una variable.
+
+40: Se esperaba ')' para completar la llamada a la función.
+
+41: Se esperaba ';' para completar la llamada a la función.
+
+42: Se esperaba ';' para completar la sentencia/expresión.
+
+43: No está permitido declarar un método dentro de otro.
+
+44: Se esperaba '"' para cerrar la cadena.
+
+45: Solo se admiten comentarios del tipo /* Comentario */.
+
+46: No se permite el uso del operador '++' con funciones.
+
+

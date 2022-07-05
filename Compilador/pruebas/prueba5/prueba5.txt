@@ -1,0 +1,39 @@
+let number v1;
+let number v2;
+let number v3;
+
+function hola () {
+	alert("Hola!\n");
+	return;
+}
+
+function adios () {
+	alert("Adios!\n");
+	return;
+}
+
+function operador () {
+	if(v1 > v2) {
+		alert("El primero es mayor que el segundo.\n");
+	}
+	
+	if(v1 > v3) {
+		alert("El primero es mayor que el tercero.\n");
+	}
+	
+	if(v2 > v3) {
+		alert("El segundo mas el tercero es: ");
+		alert(v2+v3);
+		alert("\n");
+	}
+	
+	alert("Todos son menores...\n");
+}
+
+
+
+hola();
+alert ("Escribe tres numeros: ");
+input (v1); input (v2); input (v3);
+operador();
+adios();

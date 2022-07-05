@@ -1,0 +1,18 @@
+_temp1 :=ent 2
+_temp2 :=ent 1
+if _temp1 > _temp2 goto Etiq1
+_temp3 :=ent 0
+goto Etiq2
+Etiq1:
+_temp3 :=ent 1
+Etiq2:
+found :=ent _temp3
+_temp4 :=ent !found
+if _temp4 == 0 goto Etiq6
+_temp5 :=cad "Hola mundo?"
+alert_cad _temp5
+goto Etiq5
+Etiq6:
+_temp6 :=cad "No hay nada"
+alert_cad _temp6
+Etiq5: 

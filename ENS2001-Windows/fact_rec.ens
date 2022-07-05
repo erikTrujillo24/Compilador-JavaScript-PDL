@@ -1,0 +1,93 @@
+;fact_rec.ens - ENS2001 Ejemplo de uso - Noviembre 2002
+;version recursiva del programa fact.ens (calculo del factorial)
+;NOTA: La ausencia de acentos es intencionada, para permitir la
+;legibilidad tanto en entornos Windows como Linux
+
+;El programa pide un entero y a continuacion calcula el factorial y
+;lo muestra en pantalla.
+;Es necesario que la pila este configurada hacia direcciones decrecientes,
+;si no, el ejemplo no funcionara correctamente.
+
+                ; coloco el puntero de pila en la cima de la memoria
+                        MOVE #65535,.SP
+                ; Escribo un mensaje y solicito un numero
+                        WRSTR /UN_NUMERO
+                        ININT .R1
+                ; preparo el argumento de la funcion y la llamo
+                        PUSH .R1
+                        CALL /SUB_FACT
+                ; recupero el valor y lo trato segun lo que devolvio
+                        POP .R2
+                        CMP .R2,#0
+                        BN /ERROR
+                        WRSTR /EL_FACT_ES
+                        WRINT .R2
+                        HALT
+ERROR:                  CMP .R2, #COD_NEGATIVO
+                        BZ /ERROR1
+                        WRSTR /NUMERO_GRANDE
+                        HALT
+ERROR1:                 WRSTR /NUMERO_NO_VALIDO
+                        HALT
+
+                ; almacenamiento de la cadenas de caracteres con su referencias
+
+UN_NUMERO:              DATA "\nUn numero: "
+NUMERO_NO_VALIDO:       DATA "\nNumero no valido"
+NUMERO_GRANDE:          DATA "\nNumero demasiado grande"
+EL_FACT_ES:             DATA "\nEl factorial es "
+
+COD_NEGATIVO:           EQU -1
+COD_OVERFLOW:           EQU -2
+
+
+; ************************************************************************
+; Rutina SUB_FACT
+;
+;       Calcula el factorial de un numero que le viene en la pila
+;
+;
+; ************************************************************************
+
+                ; salvo los registros en el marco de pila
+SUB_FACT:               PUSH .IY
+                        PUSH .R1
+                        PUSH .R2                        
+                ; coloco el marco de pila
+                        MOVE .SP, .IY
+                ; recojo el argumento
+                        MOVE #5[.IY],.R1
+                        CMP .R1,#0
+                        BP /SIGUE1
+                ; es negativo: devuelvo un codigo de error de numero negativo.
+                        MOVE #COD_NEGATIVO,.R2
+                        BR /VOLVER
+                ; valor no negativo
+SIGUE1:                 BP /SIGUE2
+                ; cero
+CASOBASICO:             MOVE #1,.R2
+                        BR /VOLVER
+                ; valor positivo en R1
+SIGUE2:                 CMP .R1,#1
+                        BZ /CASOBASICO
+                ; preparo el argumento de la funcion y la llamo
+                ; (llamada recursiva)
+                        SUB .R1,#1
+                        PUSH .A
+                        CALL /SUB_FACT
+                ; recupero el valor y lo trato segun lo que devolvio
+                        POP .R2  
+                        MUL .R2,.R1
+                ; compruebo el overflow        
+                        BV /OVERFLOW
+                        MOVE .A,.R2
+                        BR /VOLVER     
+                ; se produjo overflow, devuelvo codigo de error de OVERFLOW
+OVERFLOW:               MOVE #COD_OVERFLOW,.R2
+                ; retorno  el valor en la misma posicion del argumento
+VOLVER:                 MOVE .R2, #5[.IY]
+                ; restauro los valores y retorno
+                        POP .R2
+                        POP .R1
+                        POP .IY
+                        RET

@@ -1,0 +1,263 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;										;
+;		Compilado por CompiladorJSPDL	;
+;		Versión 2.3						;
+;		Erik Trujillo Guzmán			;
+;										;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+MOVE #inicio_datos_estaticos, .IY
+MOVE #inicio_pila, .IX
+BR /main 			;salto al programa principal
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+;;;;;;;;;;;;;;;;;;;;; FUNCIONES ;;;;;;;;;;;;;;;;;;;;;;
+
+
+;;;;;;;;;;; FUNCIÓN 'hola' ;;;;;;;;;;;
+
+EtFun1:	NOP
+		ADD #cad_1, #0
+		MOVE .A, .R8
+		ADD #1, .IX
+		MOVE .A, .R9
+bucle1: MOVE [.R8], [.R9]
+		INC .R8
+		INC .R9
+		CMP [.R8], #0
+		BNZ /bucle1
+		WRSTR #1[.IX]
+		BR [.IX]
+		BR [.IX]
+
+;;;;;;;;;;; FUNCIÓN 'adios' ;;;;;;;;;;;
+
+EtFun2:	NOP
+		ADD #cad_2, #0
+		MOVE .A, .R8
+		ADD #1, .IX
+		MOVE .A, .R9
+bucle2: MOVE [.R8], [.R9]
+		INC .R8
+		INC .R9
+		CMP [.R8], #0
+		BNZ /bucle2
+		WRSTR #1[.IX]
+		BR [.IX]
+		BR [.IX]
+
+;;;;;;;;;;; FUNCIÓN 'operador' ;;;;;;;;;;;
+
+EtFun3:	NOP
+		CMP #1[.IY], #0[.IY]
+		BN /Etiq1
+		MOVE #0, #1[.IX]
+		BR /Etiq2
+Etiq1:	NOP
+		MOVE #1, #1[.IX]
+Etiq2:	NOP
+		CMP #1[.IX], #0
+		BZ /Etiq4
+		ADD #cad_3, #0
+		MOVE .A, .R8
+		ADD #2, .IX
+		MOVE .A, .R9
+bucle3: MOVE [.R8], [.R9]
+		INC .R8
+		INC .R9
+		CMP [.R8], #0
+		BNZ /bucle3
+		WRSTR #2[.IX]
+		BR /Etiq3
+Etiq4:	NOP
+Etiq3:	NOP
+		CMP #2[.IY], #0[.IY]
+		BN /Etiq5
+		MOVE #0, #66[.IX]
+		BR /Etiq6
+Etiq5:	NOP
+		MOVE #1, #66[.IX]
+Etiq6:	NOP
+		CMP #66[.IX], #0
+		BZ /Etiq8
+		ADD #cad_4, #0
+		MOVE .A, .R8
+		ADD #67, .IX
+		MOVE .A, .R9
+bucle4: MOVE [.R8], [.R9]
+		INC .R8
+		INC .R9
+		CMP [.R8], #0
+		BNZ /bucle4
+		WRSTR #67[.IX]
+		BR /Etiq7
+Etiq8:	NOP
+Etiq7:	NOP
+		CMP #2[.IY], #1[.IY]
+		BN /Etiq9
+		ADD #127, .IX
+		ADD #3, .A
+		MOVE .A, .R7
+		MOVE #0, [.R7]
+		BR /Etiq10
+Etiq9:	NOP
+		ADD #127, .IX
+		ADD #3, .A
+		MOVE .A, .R7
+		MOVE #1, [.R7]
+Etiq10:	NOP
+		ADD #127, .IX
+		ADD #3, .A
+		MOVE .A, .R5
+		CMP [.R5], #0
+		BZ /Etiq12
+		ADD #127, .IX
+		ADD #4, .A
+		MOVE .A, .R7
+		ADD #cad_5, #0
+		MOVE .A, .R8
+		ADD #0, .R7
+		MOVE .A, .R9
+bucle5: MOVE [.R8], [.R9]
+		INC .R8
+		INC .R9
+		CMP [.R8], #0
+		BNZ /bucle5
+		ADD #127, .IX
+		ADD #4, .A
+		MOVE .A, .R7
+		WRSTR [.R7]
+		ADD #127, .IX
+		ADD #68, .A
+		MOVE .A, .R7
+		ADD #2[.IX], #3[.IX]
+		MOVE .A, [.R7]
+		ADD #127, .IX
+		ADD #68, .A
+		MOVE .A, .R7
+		WRINT [.R7]
+		ADD #127, .IX
+		ADD #69, .A
+		MOVE .A, .R7
+		ADD #cad_6, #0
+		MOVE .A, .R8
+		ADD #0, .R7
+		MOVE .A, .R9
+bucle6: MOVE [.R8], [.R9]
+		INC .R8
+		INC .R9
+		CMP [.R8], #0
+		BNZ /bucle6
+		ADD #127, .IX
+		ADD #69, .A
+		MOVE .A, .R7
+		WRSTR [.R7]
+		BR /Etiq11
+Etiq12:	NOP
+Etiq11:	NOP
+		ADD #127, .IX
+		ADD #127, .A
+		ADD #6, .A
+		MOVE .A, .R7
+		ADD #cad_7, #0
+		MOVE .A, .R8
+		ADD #0, .R7
+		MOVE .A, .R9
+bucle7: MOVE [.R8], [.R9]
+		INC .R8
+		INC .R9
+		CMP [.R8], #0
+		BNZ /bucle7
+		ADD #127, .IX
+		ADD #127, .A
+		ADD #6, .A
+		MOVE .A, .R7
+		WRSTR [.R7]
+		BR [.IX]
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+;;;;;;;;;;;;;;;;; PROGRAMA PRINCIPAL ;;;;;;;;;;;;;;;;;;;;
+
+main:	NOP
+		;; SECUENCIA DE LLAMADA
+		; se almacena la direccion de retorno
+		ADD #tam_RA_main, .IX
+		MOVE #dir_ret1, [.A]
+		; se incrementa el Puntero de Pila
+		ADD #tam_RA_main, .IX
+		MOVE .A, .IX
+		; se salta al procedimiento llamado
+		BR /EtFun1
+
+		;; SECUENCIA DE RETORNO
+		; se decrementa el Puntero de Pila
+dir_ret1: SUB .IX, #tam_RA_main
+		MOVE .A, .IX
+		ADD #cad_8, #0
+		MOVE .A, .R8
+		ADD #4, .IX
+		MOVE .A, .R9
+bucle8: MOVE [.R8], [.R9]
+		INC .R8
+		INC .R9
+		CMP [.R8], #0
+		BNZ /bucle8
+		WRSTR #4[.IX]
+		ININT #0[.IY]
+		ININT #1[.IY]
+		ININT #2[.IY]
+		;; SECUENCIA DE LLAMADA
+		; se almacena la direccion de retorno
+		ADD #tam_RA_main, .IX
+		MOVE #dir_ret2, [.A]
+		; se incrementa el Puntero de Pila
+		ADD #tam_RA_main, .IX
+		MOVE .A, .IX
+		; se salta al procedimiento llamado
+		BR /EtFun3
+
+		;; SECUENCIA DE RETORNO
+		; se decrementa el Puntero de Pila
+dir_ret2: SUB .IX, #tam_RA_main
+		MOVE .A, .IX
+		;; SECUENCIA DE LLAMADA
+		; se almacena la direccion de retorno
+		ADD #tam_RA_main, .IX
+		MOVE #dir_ret3, [.A]
+		; se incrementa el Puntero de Pila
+		ADD #tam_RA_main, .IX
+		MOVE .A, .IX
+		; se salta al procedimiento llamado
+		BR /EtFun2
+
+		;; SECUENCIA DE RETORNO
+		; se decrementa el Puntero de Pila
+dir_ret3: SUB .IX, #tam_RA_main
+		MOVE .A, .IX
+
+		HALT
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+cad_1: DATA "Hola!\n"
+tam_RA_hola: EQU 65
+cad_2: DATA "Adios!\n"
+tam_RA_adios: EQU 65
+cad_3: DATA "El primero es mayor que el segundo.\n"
+cad_4: DATA "El primero es mayor que el tercero.\n"
+cad_5: DATA "El segundo mas el tercero es: "
+cad_6: DATA "\n"
+cad_7: DATA "Todos son menores...\n"
+tam_RA_operador: EQU 325
+cad_8: DATA "Escribe tres numeros: "
+tam_RA_main: EQU 68
+
+inicio_datos_estaticos: RES 67
+inicio_pila: NOP
+
+END

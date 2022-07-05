@@ -1,0 +1,171 @@
+;calculadora.ens - ENS2001 Ejemplo de uso - Abril 2002
+;NOTA: La ausencia de acentos es intencionada, para permitir la
+;legibilidad tanto en entornos Windows como GNU/Linux
+
+;en R0 se guarda la direccion de la funcion de operacion
+;en R1 se guarda el primer operando
+;en R2 se guarda el segundo operando
+;en A se guarda el resultado de la operacion
+;en R3 se guarda la opcion elegida por el usuario
+
+ORG 0
+
+INICIO:
+;Muestra las operaciones por la consola
+		WRSTR /menu1
+		WRSTR /menu2
+		WRSTR /menu3
+		WRSTR /menu4
+		WRSTR /menu5
+		WRSTR /menu6
+		WRSTR /menu7
+		WRSTR /menu8
+		WRSTR /menu0
+;Lectura de la operacion
+		WRSTR /cad1
+		ININT .R3
+;Se calcula la direccion de la funcion correspondiente
+		CMP .R3,#0
+		BZ /SALIR
+		CMP .R3,#1
+		BZ $OP1
+		CMP .R3,#2
+		BZ $OP2
+		CMP .R3,#3
+		BZ $OP3
+		CMP.R3,#4
+		BZ $OP4
+		CMP .R3,#5
+		BZ $OP5
+		CMP .R3,#6
+		BZ $OP6
+		CMP .R3,#7
+		BZ $OP7
+		CMP .R3,#8
+		BZ $OP8
+		BZ $OPERROR
+OPERANDOS:
+;primer operando - se guarda en la variable OPERANDO1
+		WRSTR /cad2
+		ININT /OPERANDO1
+;segundo operando - se guarda en la variable OPERANDO2
+		WRSTR /cad3
+		ININT /OPERANDO2
+;se ponen los parametros en la pila
+		PUSH /RESULTADO
+		PUSH /OPERANDO1
+		PUSH /OPERANDO2
+;se llama a la funcion operar
+		CALL /OPERAR
+;se recuperan los valores de retorno de la funcion
+		POP /OPERANDO2
+		POP /OPERANDO1
+		POP /RESULTADO
+;se muestra el resultado
+		WRSTR /cad4
+		WRINT /RESULTADO
+		WRSTR /saltolin
+ACARREO:
+		BNC $DESBORDAMIENTO
+		WRSTR /cad7
+DESBORDAMIENTO:
+		BNV $ACABAR
+		WRSTR /cad6
+;vuelta a empezar
+ACABAR:
+		BR /INICIO
+
+;direcciones de las funciones
+OP1:
+		MOVE #SUMA,.R0
+		BR /OPERANDOS
+OP2:
+		MOVE #RESTA,.R0
+		BR /OPERANDOS
+OP3:
+		MOVE #PRODUCTO,.R0
+		BR /OPERANDOS
+OP4:
+		MOVE #DIVISION,.R0
+		BR /OPERANDOS
+OP5:
+		MOVE #MODULO,.R0
+		BR /OPERANDOS
+OP6:
+		MOVE #Y,.R0
+		BR /OPERANDOS
+OP7:
+		MOVE #O,.R0
+		BR /OPERANDOS
+OP8:
+		MOVE #OEX,.R0
+		BR /OPERANDOS
+OPERROR:
+		MOVE #ERROR,.R0
+		BR /OPERANDOS
+
+;Funciones (paso de parametros por registros)
+SUMA:
+		ADD.R1,.R2
+		RET
+RESTA:
+		SUB .R1,.R2
+		RET
+PRODUCTO:
+		MUL .R1,.R2
+		RET
+DIVISION:
+		DIV .R1,.R2
+		RET
+MODULO:
+		MOD .R1,.R2
+		RET
+Y:
+		AND .R1,.R2
+		RET
+O:
+		OR .R1,.R2
+		RET
+OEX :
+		XOR .R1,.R2
+		RET
+ERROR :
+		WRSTR /cad5
+		RET
+SALIR :
+		HALT
+
+;funcion operar	(paso de parametros por pila)
+OPERAR :
+		MOVE .SP,.IX
+		MOVE #3[.IX],.R1 ;se recupera el primer argumento
+		MOVE #2[.IX],.R2 ;se recupera el segundo argumento
+		CALL [.R0] ;se llama a la operacion pertinente
+		MOVE .A,#4[.IX] ;se devuelve el resultado
+		RET
+
+;cadenas de texto
+cad1:		DATA "Introduzca la operacion: "
+cad2:		DATA "Introduzca el primer operando: "
+cad3:		DATA "Introduzca el segundo operando: "
+cad4:		DATA "El resultado de la operacion es: "
+cad5:		DATA "La operacion introducida no es correcta.\n"
+cad6:		DATA "La operacion produjo desbordamiento.\n"
+cad7:		DATA "La operacion produjo acarreo.\n"
+menu1:		DATA "1.Suma\n"
+menu2:		DATA "2.Resta\n"
+menu3:		DATA "3.Producto\n"
+menu4:		DATA "4.Division\n"
+menu5:		DATA "5.Modulo\n"
+menu6:		DATA "6.And\n"
+menu7:		DATA "7.Or\n"
+menu8:		DATA "8.Xor\n"
+menu0:		DATA "0.Salir\n"
+saltolin:	DATA "\n"
+
+;variables
+OPERANDO1:	RES 1
+OPERANDO2:	RES 1
+RESULTADO:	RES 1
+
+END

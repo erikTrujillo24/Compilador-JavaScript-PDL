@@ -1,0 +1,103 @@
+TABLA DE SIMBOLOS GLOBAL #1:
+
+*LEXEMA: 'v3'
+	ATRIBUTOS: 
+	+tipo:			'ent'
+	+despl:			2
+
+*LEXEMA: 'hola'
+	ATRIBUTOS: 
+	+tipo:			'fun'
+	+tipoRet:		'tipo_vacio'
+	+etiqFun:		'EtFun1'
+
+*LEXEMA: '_temp12'
+	ATRIBUTOS: 
+	+tipo:			'cad'
+	+despl:			3
+
+*LEXEMA: 'adios'
+	ATRIBUTOS: 
+	+tipo:			'fun'
+	+tipoRet:		'tipo_vacio'
+	+etiqFun:		'EtFun2'
+
+*LEXEMA: 'v1'
+	ATRIBUTOS: 
+	+tipo:			'ent'
+	+despl:			0
+
+*LEXEMA: 'v2'
+	ATRIBUTOS: 
+	+tipo:			'ent'
+	+despl:			1
+
+*LEXEMA: 'operador'
+	ATRIBUTOS: 
+	+tipo:			'fun'
+	+tipoRet:		'tipo_vacio'
+	+etiqFun:		'EtFun3'
+
+--------------------------------------
+TABLA DE SIMBOLOS DE hola #2:
+
+*LEXEMA: '_temp1'
+	ATRIBUTOS: 
+	+tipo:			'cad'
+	+despl:			0
+
+--------------------------------------
+TABLA DE SIMBOLOS DE adios #3:
+
+*LEXEMA: '_temp2'
+	ATRIBUTOS: 
+	+tipo:			'cad'
+	+despl:			0
+
+--------------------------------------
+TABLA DE SIMBOLOS DE operador #4:
+
+*LEXEMA: '_temp3'
+	ATRIBUTOS: 
+	+tipo:			'log'
+	+despl:			0
+
+*LEXEMA: '_temp4'
+	ATRIBUTOS: 
+	+tipo:			'cad'
+	+despl:			1
+
+*LEXEMA: '_temp5'
+	ATRIBUTOS: 
+	+tipo:			'log'
+	+despl:			65
+
+*LEXEMA: '_temp7'
+	ATRIBUTOS: 
+	+tipo:			'log'
+	+despl:			130
+
+*LEXEMA: '_temp11'
+	ATRIBUTOS: 
+	+tipo:			'cad'
+	+despl:			260
+
+*LEXEMA: '_temp6'
+	ATRIBUTOS: 
+	+tipo:			'cad'
+	+despl:			66
+
+*LEXEMA: '_temp8'
+	ATRIBUTOS: 
+	+tipo:			'cad'
+	+despl:			131
+
+*LEXEMA: '_temp10'
+	ATRIBUTOS: 
+	+tipo:			'cad'
+	+despl:			196
+
+*LEXEMA: '_temp9'
+	ATRIBUTOS: 
+	+tipo:			'ent'
+	+despl:			195

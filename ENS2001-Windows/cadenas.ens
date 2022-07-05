@@ -1,0 +1,63 @@
+;cadenas.ens - ENS2001 Ejemplo de uso - Abril 2002
+;NOTA: La ausencia de acentos es intencionada, para permitir la
+;legibilidad tanto en entornos Windows como Linux
+
+;Lectura de dos cadenas, concatenar y dar la vuelta.
+;El programa pide al usuario que introduzca dos cadenas cualesquiera.
+;A continuacion, las concatena y muestra el resultado en pantalla al
+;derecho y al reves
+
+                ;leer cadena1
+                WRSTR /mens1
+                INSTR /cadena1
+                ;leer cadena2
+                WRSTR /mens2
+                INSTR /cadena2
+                ;concatenar
+                MOVE #cadena1,.R1
+                MOVE #cadena2,.R2
+                MOVE #resu1,.R0
+                MOVE #resu2,.R3
+cad1:           CMP [.R1],#0 ; fin de cadena?
+                BZ $cad2 ; pasamos a la siguiente
+                MOVE [.R1],[.R0] ; copiamos un caracter
+                INC .R0 ; incrementamos ambos
+                INC .R1 ; punteros
+                BR $cad1
+cad2:           CMP [.R2],#0 ; fin de cadena?
+                BZ $fin 
+                MOVE [.R2],[.R0] ; copiamos un caracter
+                INC .R0 ; incrementamos ambos
+                INC .R2 ; punteros
+                BR $cad2        
+fin:            MOVE #0,[.R0]
+                ;mostrar al derecho
+                WRSTR /derecho
+                WRSTR /resu1
+                WRSTR /eol
+                ;mostrar al reves
+                CMP .R0,#resu1
+                BZ $fin2
+rev:            DEC .R0
+                CMP [.R0],#0
+                BZ $fin2
+                MOVE [.R0],[.R3]
+                INC .R3
+                BR $rev
+fin2:           MOVE #0,[.R3]
+                WRSTR /reves
+                WRSTR /resu2
+                WRSTR /eol
+                HALT
+                ;cadenas
+mens1:          DATA "Introduzca la primera cadena: "
+mens2:          DATA "Introduzca la segunda cadena: "
+derecho:        DATA "Cadena al derecho: "
+reves:          DATA "Cadena al reves: "
+eol:            DATA "\n"
+cadena1:        RES 500
+cadena2:        RES 500
+resu1:          RES 1000
+resu2:          RES 1000
+                END
+        

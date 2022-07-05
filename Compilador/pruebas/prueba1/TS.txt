@@ -1,0 +1,36 @@
+TABLA DE SIMBOLOS GLOBAL #1:
+
+*LEXEMA: '_temp1'
+	ATRIBUTOS: 
+	+tipo:			'ent'
+	+despl:			1
+
+*LEXEMA: '_temp6'
+	ATRIBUTOS: 
+	+tipo:			'cad'
+	+despl:			69
+
+*LEXEMA: '_temp5'
+	ATRIBUTOS: 
+	+tipo:			'cad'
+	+despl:			5
+
+*LEXEMA: '_temp4'
+	ATRIBUTOS: 
+	+tipo:			'log'
+	+despl:			4
+
+*LEXEMA: '_temp3'
+	ATRIBUTOS: 
+	+tipo:			'log'
+	+despl:			3
+
+*LEXEMA: 'found'
+	ATRIBUTOS: 
+	+tipo:			'log'
+	+despl:			0
+
+*LEXEMA: '_temp2'
+	ATRIBUTOS: 
+	+tipo:			'ent'
+	+despl:			2

@@ -1,0 +1,79 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;										;
+;		Compilado por CompiladorJSPDL	;
+;		Versión 2.3						;
+;		Erik Trujillo Guzmán			;
+;										;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+MOVE #inicio_datos_estaticos, .IY
+MOVE #inicio_pila, .IX
+BR /main 			;salto al programa principal
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+;;;;;;;;;;;;;;;;;;;;; FUNCIONES ;;;;;;;;;;;;;;;;;;;;;;
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+
+;;;;;;;;;;;;;;;;; PROGRAMA PRINCIPAL ;;;;;;;;;;;;;;;;;;;;
+
+main:	NOP
+		MOVE #2, #2[.IX]
+		MOVE #1, #3[.IX]
+		CMP #3[.IX], #2[.IX]
+		BN /Etiq1
+		MOVE #0, #4[.IX]
+		BR /Etiq2
+Etiq1:	NOP
+		MOVE #1, #4[.IX]
+Etiq2:	NOP
+		MOVE #4[.IX], #0[.IY]
+		CMP #0[.IY], #0
+		BZ /Etiq3
+		MOVE #0, #5[.IX]
+		BR /Etiq4
+Etiq3:	MOVE #1, #5[.IX]
+Etiq4:	NOP
+		CMP #5[.IX], #0
+		BZ /Etiq6
+		ADD #cad_1, #0
+		MOVE .A, .R8
+		ADD #6, .IX
+		MOVE .A, .R9
+bucle1: MOVE [.R8], [.R9]
+		INC .R8
+		INC .R9
+		CMP [.R8], #0
+		BNZ /bucle1
+		WRSTR #6[.IX]
+		BR /Etiq5
+Etiq6:	NOP
+		ADD #cad_2, #0
+		MOVE .A, .R8
+		ADD #70, .IX
+		MOVE .A, .R9
+bucle2: MOVE [.R8], [.R9]
+		INC .R8
+		INC .R9
+		CMP [.R8], #0
+		BNZ /bucle2
+		WRSTR #70[.IX]
+Etiq5:	NOP
+
+		HALT
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+cad_1: DATA "Hola mundo?"
+cad_2: DATA "No hay nada"
+tam_RA_main: EQU 134
+
+inicio_datos_estaticos: RES 133
+inicio_pila: NOP
+
+END

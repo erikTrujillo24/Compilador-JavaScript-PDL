@@ -1,0 +1,108 @@
+TABLA DE SIMBOLOS GLOBAL #1:
+
+*LEXEMA: '_temp11'
+	ATRIBUTOS: 
+	+tipo:			'log'
+	+despl:			66
+
+*LEXEMA: 'result'
+	ATRIBUTOS: 
+	+tipo:			'ent'
+	+despl:			68
+
+*LEXEMA: 'x'
+	ATRIBUTOS: 
+	+tipo:			'ent'
+	+despl:			0
+
+*LEXEMA: '_temp12'
+	ATRIBUTOS: 
+	+tipo:			'ent'
+	+despl:			67
+
+*LEXEMA: '_temp9'
+	ATRIBUTOS: 
+	+tipo:			'cad'
+	+despl:			1
+
+*LEXEMA: '_temp10'
+	ATRIBUTOS: 
+	+tipo:			'ent'
+	+despl:			65
+
+*LEXEMA: '_temp13'
+	ATRIBUTOS: 
+	+tipo:			'cad'
+	+despl:			69
+
+*LEXEMA: 'fun'
+	ATRIBUTOS: 
+	+tipo:			'fun'
+	+numParam:		2
+	+tipoParam01:	'log'
+	+tipoParam02:	'ent'
+	+tipoRet:		'ent'
+	+etiqFun:		'EtFun1'
+
+--------------------------------------
+TABLA DE SIMBOLOS DE fun #2:
+
+*LEXEMA: '_temp3'
+	ATRIBUTOS: 
+	+tipo:			'log'
+	+despl:			6
+
+*LEXEMA: '_temp7'
+	ATRIBUTOS: 
+	+tipo:			'ent'
+	+despl:			10
+
+*LEXEMA: 'x'
+	ATRIBUTOS: 
+	+tipo:			'log'
+	+despl:			1
+
+*LEXEMA: '_temp6'
+	ATRIBUTOS: 
+	+tipo:			'ent'
+	+despl:			9
+
+*LEXEMA: '_temp2'
+	ATRIBUTOS: 
+	+tipo:			'ent'
+	+despl:			4
+
+*LEXEMA: '_temp5'
+	ATRIBUTOS: 
+	+tipo:			'ent'
+	+despl:			8
+
+*LEXEMA: 'y'
+	ATRIBUTOS: 
+	+tipo:			'ent'
+	+despl:			0
+
+*LEXEMA: '_temp1'
+	ATRIBUTOS: 
+	+tipo:			'ent'
+	+despl:			2
+
+*LEXEMA: 'z'
+	ATRIBUTOS: 
+	+tipo:			'ent'
+	+despl:			3
+
+*LEXEMA: '_temp8'
+	ATRIBUTOS: 
+	+tipo:			'ent'
+	+despl:			11
+
+*LEXEMA: '_temp4'
+	ATRIBUTOS: 
+	+tipo:			'ent'
+	+despl:			7
+
+*LEXEMA: 'res'
+	ATRIBUTOS: 
+	+tipo:			'ent'
+	+despl:			5

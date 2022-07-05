@@ -1,0 +1,93 @@
+TABLA DE SIMBOLOS GLOBAL #1:
+
+*LEXEMA: '_temp7'
+	ATRIBUTOS: 
+	+tipo:			'ent'
+	+despl:			258
+
+*LEXEMA: '_temp3'
+	ATRIBUTOS: 
+	+tipo:			'cad'
+	+despl:			130
+
+*LEXEMA: '_temp1'
+	ATRIBUTOS: 
+	+tipo:			'ent'
+	+despl:			0
+
+*LEXEMA: 'x'
+	ATRIBUTOS: 
+	+tipo:			'ent'
+	+despl:			1
+
+*LEXEMA: 'z'
+	ATRIBUTOS: 
+	+tipo:			'cad'
+	+despl:			194
+
+*LEXEMA: '_temp8'
+	ATRIBUTOS: 
+	+tipo:			'cad'
+	+despl:			259
+
+*LEXEMA: 'res'
+	ATRIBUTOS: 
+	+tipo:			'cad'
+	+despl:			323
+
+*LEXEMA: 'hola'
+	ATRIBUTOS: 
+	+tipo:			'fun'
+	+numParam:		2
+	+tipoParam01:	'ent'
+	+tipoParam02:	'ent'
+	+tipoRet:		'cad'
+	+etiqFun:		'EtFun1'
+
+*LEXEMA: '_temp2'
+	ATRIBUTOS: 
+	+tipo:			'cad'
+	+despl:			2
+
+*LEXEMA: 'y'
+	ATRIBUTOS: 
+	+tipo:			'cad'
+	+despl:			66
+
+*LEXEMA: '_temp9'
+	ATRIBUTOS: 
+	+tipo:			'cad'
+	+despl:			387
+
+--------------------------------------
+TABLA DE SIMBOLOS DE hola #2:
+
+*LEXEMA: '_temp4'
+	ATRIBUTOS: 
+	+tipo:			'ent'
+	+despl:			2
+
+*LEXEMA: '_temp5'
+	ATRIBUTOS: 
+	+tipo:			'ent'
+	+despl:			4
+
+*LEXEMA: '_temp6'
+	ATRIBUTOS: 
+	+tipo:			'log'
+	+despl:			5
+
+*LEXEMA: 'op2'
+	ATRIBUTOS: 
+	+tipo:			'ent'
+	+despl:			0
+
+*LEXEMA: 'op1'
+	ATRIBUTOS: 
+	+tipo:			'ent'
+	+despl:			1
+
+*LEXEMA: 'suma'
+	ATRIBUTOS: 
+	+tipo:			'ent'
+	+despl:			3

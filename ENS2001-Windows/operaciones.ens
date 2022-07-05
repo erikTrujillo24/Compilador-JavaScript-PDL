@@ -1,0 +1,144 @@
+;operaciones.ens
+;en r0 se guarda la direccion de la funcion de operacion
+;en r1 se guarda el primer operando
+;en r2 se guarda el segundo operando
+;en a se guarda el resultado de la operacion
+;en r3 se guarda la opcion elegida por el usuario
+
+INICIO :	
+;Muestra las operaciones por la consola
+		wrstr /menu1
+		wrstr /menu2
+		wrstr /menu3
+		wrstr /menu4
+		wrstr /menu5
+		wrstr /menu6
+		wrstr /menu7
+		wrstr /menu8
+		wrstr /menu0
+;Lectura de la operacion
+		wrstr /cad1
+		inint .r3
+;Se calcula la direccion de la funcion correspondiente
+		cmp .r3,#0
+		bz /SALIR
+		cmp .r3,#1
+		bz $OP1
+		cmp .r3,#2
+		bz $OP2
+		cmp .r3,#3
+		bz $OP3
+		cmp .r3,#4
+		bz $OP4
+		cmp .r3,#5
+		bz $OP5
+		cmp .r3,#6
+		bz $OP6
+		cmp .r3,#7
+		bz $OP7
+		cmp .r3,#8
+		bz $OP8
+		br $OPERROR
+OPERANDOS :	
+;primer operando - se guarda en la variable OPERANDO1
+		wrstr /cad2
+		inint /OPERANDO1
+;segundo operando - se guarda en la variable OPERANDO2
+		wrstr /cad3
+		inint /OPERANDO2
+;se ponen los parametros en la pila
+		push /RESULTADO
+		push /OPERANDO1
+		push /OPERANDO2
+;se llama a la funcion operar
+		call /OPERAR
+;se recuperan los valores de retorno de la funcion
+		pop /OPERANDO2
+		pop /OPERANDO1
+		pop /RESULTADO
+;se muestra el resultado
+		wrstr /cad4
+		wrint /RESULTADO
+		wrstr /saltolin
+ACARREO :	bnc $DESBORDAMIENTO
+		wrstr /cad7
+DESBORDAMIENTO :bnv $ACABAR
+		wrstr /cad6
+;vuelta a empezar
+ACABAR :	br /INICIO
+		
+;direcciones de las funciones		
+OP1 : 		move #SUMA,/OPERACION
+		br /OPERANDOS
+OP2 :		move #RESTA,/OPERACION
+		br /OPERANDOS
+OP3 : 		move #PRODUCTO,/OPERACION
+		br /OPERANDOS
+OP4 : 		move #DIVISION,/OPERACION
+		br /OPERANDOS
+OP5 :		move #MODULO,/OPERACION
+		br /OPERANDOS
+OP6 :		move #Y,/OPERACION
+		br /OPERANDOS
+OP7 :		move #O,/OPERACION
+		br /OPERANDOS
+OP8 :		move #OEX,/OPERACION
+		br /OPERANDOS
+OPERROR :	move #ERROR,/OPERACION
+		br /OPERANDOS
+		
+;Funciones (paso de parametros por registros)
+SUMA :		add .r1,.r2
+		ret
+RESTA :		sub .r1,.r2
+		ret
+PRODUCTO :	mul .r1,.r2
+		ret
+DIVISION :	div .r1,.r2
+		ret
+MODULO :	mod .r1,.r2
+		ret
+Y :		and .r1,.r2
+		ret
+O :		or .r1,.r2
+		ret
+OEX :		xor .r1,.r2
+		ret
+ERROR :		wrstr /cad5
+		ret
+SALIR :		halt
+
+;funcion operar	(paso de parametros por pila)	
+OPERAR :	move .sp,.ix
+		move #3[.ix],.r1 ;se recupera el primer argumento
+		move #2[.ix],.r2 ;se recupera el segundo argumento
+		move #OPERACION,.r0 ;
+		call [.r0] ;se llama a la operacion pertinente
+		move .a,#4[.ix] ;se devuelve el resultado
+		ret
+		
+;cadenas de texto	
+cad1 :		data "Introduzca la operacion: "
+cad2 :		data "Introduzca el primer operando: "
+cad3 :		data "Introduzca el segundo operando: "
+cad4 :		data "El resultado de la operacion es: "	
+cad5 :		data "La operacion introducida no es correcta.\n"
+cad6 :		data "La operacion produjo desbordamiento.\n"
+cad7 :		data "La operacion produjo acarreo.\n"
+menu1 :		data "1.Suma\n"
+menu2 :		data "2.Resta\n"
+menu3 :		data "3.Producto\n"
+menu4 :		data "4.Division\n"
+menu5 :		data "5.Modulo\n"
+menu6 :		data "6.And\n"
+menu7 :		data "7.Or\n"
+menu8 :		data "8.Xor\n"
+menu0 :		data "0.Salir\n"
+saltolin :	data "\n"
+
+;variables
+OPERACION :	res 1
+OPERANDO1 :	res 1
+OPERANDO2 : 	res 1
+RESULTADO :	res 1
+end
